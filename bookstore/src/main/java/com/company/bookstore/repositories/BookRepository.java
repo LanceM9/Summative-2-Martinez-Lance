@@ -1,4 +1,4 @@
-package com.company.bookstore.repositorys;
+package com.company.bookstore.repositories;
 
 
 import com.company.bookstore.models.Book;
