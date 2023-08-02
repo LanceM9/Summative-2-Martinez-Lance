@@ -1,4 +1,13 @@
-
+type Author{
+    id: ID!
+    firstName: String!
+    lastName: String!
+    street: String
+    city: String!
+    postalCode: String!
+    phone: String!
+    email: String!
+}
 type Publisher {
     id: ID!
     name: String!
@@ -10,20 +19,8 @@ type Publisher {
     email: String!
 }
 
-type Query {
+
+type Query{
+    findAuthorById(id:ID!): Author
     findPublisherById(id:ID!): Publisher
 }
-
-#type Book {
-#    id: ID!
-#    isbn: String!
-#    publishDate: String!
-#    author: Author
-#    title: String!
-#    publisher: Publisher
-#    price: Int!
-#}
-#
-#type Author {
-#    id: ID!
-#}
