@@ -22,6 +22,13 @@ public class AuthorController {
         return authorRepository.save(author);
     }
 
+    //Update
+    @PutMapping("/authors")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateAuthor(@RequestBody Author author){
+        authorRepository.save(author);
+    }
+
     // Read by Id
     @GetMapping("/authors/{id}")
     public Author getAuthorById(@PathVariable int id){
@@ -39,12 +46,6 @@ public class AuthorController {
         return authorRepository.findAll();
     }
 
-    //Update
-    @PutMapping("/authors")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateAuthor(@RequestBody Author author){
-        authorRepository.save(author);
-    }
 
     //Delete
     @DeleteMapping("/authors/{id}")
