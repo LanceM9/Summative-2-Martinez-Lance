@@ -31,9 +31,6 @@ public class PublisherControllerTests {
 
     Set<Book> books = new HashSet<>();
 
-    Publisher publisher = new Publisher(117, books, "Pearson", "123 Pearson Street", "New York City",
-            "New York", "10001", "2123388487", "pearson.publishing@pearson.com");
-
     @BeforeEach
     public void setUp() {
         publisherRepository.deleteAll();
@@ -42,6 +39,15 @@ public class PublisherControllerTests {
     // Testing add publisher
     @Test
     public void addShouldReturn201 () throws Exception {
+        // Arrange
+        Publisher publisher = new Publisher();
+        publisher.setName("Pearson");
+        publisher.setStreet("123 Pearson Street");
+        publisher.setCity("New York City");
+        publisher.setState("NY");
+        publisher.setPostalCode("10001");
+        publisher.setPhone("2123388487");
+        publisher.setEmail("pearson.publishing@pearson.com");
         // Act
         String inputJson = mapper.writeValueAsString(publisher);
 
@@ -55,6 +61,16 @@ public class PublisherControllerTests {
     // Testing get all publishers
     @Test
     public void getShouldReturn200 () throws Exception {
+        // Arrange
+        Publisher publisher = new Publisher();
+        publisher.setName("Pearson");
+        publisher.setStreet("123 Pearson Street");
+        publisher.setCity("New York City");
+        publisher.setState("NY");
+        publisher.setPostalCode("10001");
+        publisher.setPhone("2123388487");
+        publisher.setEmail("pearson.publishing@pearson.com");
+
         // Act
         publisherRepository.save(publisher);
 
@@ -66,17 +82,37 @@ public class PublisherControllerTests {
     // Testing get publisher by id
     @Test
     public void getByIdShouldReturn200 () throws Exception {
+        // Arrange
+        Publisher publisher = new Publisher();
+        publisher.setId(117);
+        publisher.setName("Pearson");
+        publisher.setStreet("123 Pearson Street");
+        publisher.setCity("New York City");
+        publisher.setState("NY");
+        publisher.setPostalCode("10001");
+        publisher.setPhone("2123388487");
+        publisher.setEmail("pearson.publishing@pearson.com");
+
         // Act
         publisherRepository.save(publisher);
 
         // Assert
-        mockMvc.perform(get("/publishers/{id}"))
+        mockMvc.perform(get("/publishers/117"))
                 .andExpect(status().isOk());
     }
 
     // Testing update publisher
     @Test
     public void updateShouldReturn204 () throws Exception {
+        // Arrange
+        Publisher publisher = new Publisher();
+        publisher.setName("Pearson");
+        publisher.setStreet("123 Pearson Street");
+        publisher.setCity("New York City");
+        publisher.setState("NY");
+        publisher.setPostalCode("10001");
+        publisher.setPhone("2123388487");
+        publisher.setEmail("pearson.publishing@pearson.com");
         // Act
         String inputJson = mapper.writeValueAsString(publisher);
 
@@ -90,11 +126,21 @@ public class PublisherControllerTests {
     // Testing delete publisher by id
     @Test
     public void deleteByIdShouldReturn204 () throws Exception {
+        // Arrange
+        Publisher publisher = new Publisher();
+        publisher.setId(117);
+        publisher.setName("Pearson");
+        publisher.setStreet("123 Pearson Street");
+        publisher.setCity("New York City");
+        publisher.setState("NY");
+        publisher.setPostalCode("10001");
+        publisher.setPhone("2123388487");
+        publisher.setEmail("pearson.publishing@pearson.com");
         // Act
         publisherRepository.save(publisher);
 
         // Arrange
-        mockMvc.perform(delete("/publishers/{id}"))
+        mockMvc.perform(delete("/publishers/117"))
                 .andExpect(status().isNoContent());
     }
 

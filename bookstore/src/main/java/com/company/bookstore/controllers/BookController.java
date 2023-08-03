@@ -30,7 +30,8 @@ public class BookController {
             return null;
         }
     }
-    @GetMapping("/Books/{id}")
+    // @GetMapping("/Books/{id}")
+    @GetMapping("/books/author/{id}")
     public Book getBookByAuthorId(@PathVariable int author_id) {
 
         Optional<Book> returnVal = bookRepository.findById(author_id);

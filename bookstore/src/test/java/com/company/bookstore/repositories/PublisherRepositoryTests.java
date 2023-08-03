@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -20,41 +21,86 @@ public class PublisherRepositoryTests {
     @Autowired
     PublisherRepository publisherRepository;
 
-    Set<Book> books = new HashSet<>();
+    @Autowired
+    BookRepository bookRepository;
 
-    Publisher publisher = new Publisher(117, books, "Pearson", "123 Pearson Street", "New York City",
-            "New York", "10001", "2123388487", "pearson.publishing@pearson.com");
+    @Autowired
+    AuthorRepository authorRepository;
+
+    //Publisher publisher = new Publisher();
+
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws Exception{
         publisherRepository.deleteAll();
+        bookRepository.deleteAll();
+        authorRepository.deleteAll();
+
+//        publisher.setId(117);
+//        publisher.setName("Pearson");
+//        publisher.setStreet("123 Pearson Street");
+//        publisher.setCity("New York City");
+//        publisher.setState("New York");
+//        publisher.setPostalCode("10001");
+//        publisher.setPhone("2123388487");
+//        publisher.setEmail("pearson.publishing@pearson.com");
     }
 
     // Testing add publisher
     @Test
     public void shouldAddPublisher () {
+        // Arrange
+        Publisher publisher = new Publisher();
+        publisher.setName("Pearson");
+        publisher.setStreet("123 Pearson Street");
+        publisher.setCity("New York City");
+        publisher.setState("NY");
+        publisher.setPostalCode("10001");
+        publisher.setPhone("2123388487");
+        publisher.setEmail("pearson.publishing@pearson.com");
+
         // Act
         publisher = publisherRepository.save(publisher);
+        Optional<Publisher> publisher1 = publisherRepository.findById(publisher.getId());
 
         // Assert
-        Optional<Publisher> publisher1 = publisherRepository.findById(publisher.getId());
         assertEquals(publisher1.get(), publisher);
     }
 
     // Testing get all publishers
     @Test
     public void shouldGetAllPublishers () {
+        // Arrange
+        Publisher publisher = new Publisher();
+        publisher.setName("Pearson");
+        publisher.setStreet("123 Pearson Street");
+        publisher.setCity("New York City");
+        publisher.setState("NY");
+        publisher.setPostalCode("10001");
+        publisher.setPhone("2123388487");
+        publisher.setEmail("pearson.publishing@pearson.com");
+
         // Act
         publisherRepository.save(publisher);
+        List<Publisher> publisherList = publisherRepository.findAll();
 
         // Assert
-        List<Publisher> publisherList = publisherRepository.findAll();
         assertEquals(publisherList.size(), 1);
     }
 
     // Testing get publisher by id
     @Test
     public void shouldGetPublisherById() {
+        // Arrange
+        Publisher publisher = new Publisher();
+        publisher.setName("Pearson");
+        publisher.setStreet("123 Pearson Street");
+        publisher.setCity("New York City");
+        publisher.setState("NY");
+        publisher.setPostalCode("10001");
+        publisher.setPhone("2123388487");
+        publisher.setEmail("pearson.publishing@pearson.com");
+
         // Act
         publisher = publisherRepository.save(publisher);
 
@@ -66,6 +112,16 @@ public class PublisherRepositoryTests {
     // Testing update publisher
     @Test
     public void shouldUpdatePublisher() {
+        // Arrange
+        Publisher publisher = new Publisher();
+        publisher.setName("Pearson");
+        publisher.setStreet("123 Pearson Street");
+        publisher.setCity("New York City");
+        publisher.setState("NY");
+        publisher.setPostalCode("10001");
+        publisher.setPhone("2123388487");
+        publisher.setEmail("pearson.publishing@pearson.com");
+
         // Act
         publisher = publisherRepository.save(publisher);
 
@@ -82,6 +138,16 @@ public class PublisherRepositoryTests {
     // Testing delete publisher by id
     @Test
     public void shouldDeletePublisher() {
+        // Arrange
+        Publisher publisher = new Publisher();
+        publisher.setName("Pearson");
+        publisher.setStreet("123 Pearson Street");
+        publisher.setCity("New York City");
+        publisher.setState("NY");
+        publisher.setPostalCode("10001");
+        publisher.setPhone("2123388487");
+        publisher.setEmail("pearson.publishing@pearson.com");
+
         // Act
         publisher = publisherRepository.save(publisher);
 

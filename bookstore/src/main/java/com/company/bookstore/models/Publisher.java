@@ -3,6 +3,7 @@ package com.company.bookstore.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -10,7 +11,7 @@ import java.util.Set;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "publisher")
-public class Publisher {
+public class Publisher implements Serializable {
 
     @Id
     @Column(name = "publisher_id")
@@ -18,7 +19,7 @@ public class Publisher {
     private Integer id;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "publisher_id")
     private Set<Book> books = new HashSet<>();
 
     private String name;
@@ -29,20 +30,18 @@ public class Publisher {
     private String phone;
     private String email;
 
-    public Publisher() {
-    }
 
-    public Publisher(Integer id, Set<Book> books, String name, String street, String city, String state, String postalCode, String phone, String email) {
-        this.id = id;
-        this.books = books;
-        this.name = name;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.postalCode = postalCode;
-        this.phone = phone;
-        this.email = email;
-    }
+
+//    public Publisher(Integer id, String name, String street, String city, String state, String postalCode, String phone, String email) {
+//        this.id = id;
+//        this.name = name;
+//        this.street = street;
+//        this.city = city;
+//        this.state = state;
+//        this.postalCode = postalCode;
+//        this.phone = phone;
+//        this.email = email;
+//    }
 
     public Integer getId() {
         return id;
@@ -50,14 +49,6 @@ public class Publisher {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Set<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
     }
 
     public String getName() {

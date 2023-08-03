@@ -46,7 +46,7 @@ public class PublisherController {
     }
 
     // Delete by id
-    @DeleteMapping("/publisher/{id}")
+    @DeleteMapping("/publishers/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePublisher(@PathVariable int id){
         publisherRepository.deleteById(id);

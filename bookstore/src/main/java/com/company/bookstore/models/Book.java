@@ -14,18 +14,20 @@ public class Book implements Serializable{
 
     @Id
     @Column(name = "book_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
     private String isbn;
 
     private LocalDate publishDate;
 
+    @Column(name = "author_id")
     private Integer authorId;
 
     private String title;
 
-    private Integer publisherId;
+    @Column(name = "publisher_id")
+    private Integer publisher_id;
 
     private Integer price;
 
@@ -35,7 +37,7 @@ public class Book implements Serializable{
         this.publishDate = publishDate;
         this.authorId = authorId;
         this.title = title;
-        this.publisherId = publisherId;
+        this.publisher_id = publisher_id;
         this.price = price;
     }
 
@@ -83,11 +85,11 @@ public class Book implements Serializable{
     }
 
     public Integer getPublisherId() {
-        return publisherId;
+        return publisher_id;
     }
 
     public void setPublisherId(Integer publisherId) {
-        this.publisherId = publisherId;
+        this.publisher_id = publisherId;
     }
 
     public Integer getPrice() {
@@ -103,12 +105,12 @@ public class Book implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(Id, book.Id) && Objects.equals(isbn, book.isbn) && Objects.equals(publishDate, book.publishDate) && Objects.equals(authorId, book.authorId) && Objects.equals(title, book.title) && Objects.equals(publisherId, book.publisherId) && Objects.equals(price, book.price);
+        return Objects.equals(Id, book.Id) && Objects.equals(isbn, book.isbn) && Objects.equals(publishDate, book.publishDate) && Objects.equals(authorId, book.authorId) && Objects.equals(title, book.title) && Objects.equals(publisher_id, book.publisher_id) && Objects.equals(price, book.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, isbn, publishDate, authorId, title, publisherId, price);
+        return Objects.hash(Id, isbn, publishDate, authorId, title, publisher_id, price);
     }
 
     @Override
@@ -119,7 +121,7 @@ public class Book implements Serializable{
                 ", publishDate=" + publishDate +
                 ", authorId=" + authorId +
                 ", title='" + title + '\'' +
-                ", publisherId=" + publisherId +
+                ", publisherId=" + publisher_id +
                 ", price=" + price +
                 '}';
     }

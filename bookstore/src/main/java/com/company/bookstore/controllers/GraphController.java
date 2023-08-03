@@ -19,6 +19,8 @@ public class GraphController {
     @Autowired
     PublisherRepository publisherRepository;
 
+    // do I need to schema map so that the author of the book is associated with the book?
+
 
     @QueryMapping
     public Author findAuthorById(@Argument Integer id){
