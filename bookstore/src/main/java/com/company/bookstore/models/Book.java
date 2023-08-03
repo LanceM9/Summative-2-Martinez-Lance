@@ -27,7 +27,7 @@ public class Book implements Serializable{
     private String title;
 
     @Column(name = "publisher_id")
-    private Integer publisher_id;
+    private Integer publisherId;
 
     private Integer price;
 
@@ -37,7 +37,7 @@ public class Book implements Serializable{
         this.publishDate = publishDate;
         this.authorId = authorId;
         this.title = title;
-        this.publisher_id = publisher_id;
+        this.publisherId = publisherId;
         this.price = price;
     }
 
@@ -85,11 +85,11 @@ public class Book implements Serializable{
     }
 
     public Integer getPublisherId() {
-        return publisher_id;
+        return publisherId;
     }
 
     public void setPublisherId(Integer publisherId) {
-        this.publisher_id = publisherId;
+        this.publisherId = publisherId;
     }
 
     public Integer getPrice() {
@@ -105,12 +105,12 @@ public class Book implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(Id, book.Id) && Objects.equals(isbn, book.isbn) && Objects.equals(publishDate, book.publishDate) && Objects.equals(authorId, book.authorId) && Objects.equals(title, book.title) && Objects.equals(publisher_id, book.publisher_id) && Objects.equals(price, book.price);
+        return Objects.equals(Id, book.Id) && Objects.equals(isbn, book.isbn) && Objects.equals(publishDate, book.publishDate) && Objects.equals(authorId, book.authorId) && Objects.equals(title, book.title) && Objects.equals(publisherId, book.publisherId) && Objects.equals(price, book.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, isbn, publishDate, authorId, title, publisher_id, price);
+        return Objects.hash(Id, isbn, publishDate, authorId, title, publisherId, price);
     }
 
     @Override
@@ -121,7 +121,7 @@ public class Book implements Serializable{
                 ", publishDate=" + publishDate +
                 ", authorId=" + authorId +
                 ", title='" + title + '\'' +
-                ", publisherId=" + publisher_id +
+                ", publisherId=" + publisherId +
                 ", price=" + price +
                 '}';
     }

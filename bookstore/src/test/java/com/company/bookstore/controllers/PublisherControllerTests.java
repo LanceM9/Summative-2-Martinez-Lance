@@ -1,6 +1,5 @@
 package com.company.bookstore.controllers;
 
-import com.company.bookstore.models.Book;
 import com.company.bookstore.models.Publisher;
 import com.company.bookstore.repositories.PublisherRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,10 +10,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-
-import javax.print.attribute.standard.Media;
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,8 +23,6 @@ public class PublisherControllerTests {
     MockMvc mockMvc;
 
     ObjectMapper mapper = new ObjectMapper();
-
-    Set<Book> books = new HashSet<>();
 
     @BeforeEach
     public void setUp() {
