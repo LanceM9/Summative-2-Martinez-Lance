@@ -27,9 +27,10 @@ public class PublisherRepositoryTests {
 
     @BeforeEach
     public void setUp() throws Exception{
-        publisherRepository.deleteAll();
         bookRepository.deleteAll();
         authorRepository.deleteAll();
+        publisherRepository.deleteAll();
+
     }
 
     // Testing add publisher
@@ -67,7 +68,7 @@ public class PublisherRepositoryTests {
         publisher.setEmail("pearson.publishing@pearson.com");
 
         // Act
-        publisherRepository.save(publisher);
+        publisher = publisherRepository.save(publisher);
         List<Publisher> publisherList = publisherRepository.findAll();
 
         // Assert
