@@ -33,10 +33,8 @@ public class Author implements Serializable {
 
     private String email;
 
-    // @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    // private List<Book> books = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "book_id")
+    @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id")
     private Set<Book> books = new HashSet<>();
     public Author() {
     }
@@ -133,14 +131,6 @@ public class Author implements Serializable {
     public void setBooks(Set<Book> books) {
         this.books = books;
     }
-
-    //    public List<Book> getBooks() {
-//        return books;
-//    }
-//
-//    public void setBooks(List<Book> books) {
-//        this.books = books;
-//    }
 
     @Override
     public boolean equals(Object o) {

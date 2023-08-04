@@ -15,12 +15,12 @@ public class BookController {
     @Autowired
     BookRepository bookRepository;
 
-    @GetMapping("/Books")
+    @GetMapping("/books")
     public List<Book> getBooks() {
         return bookRepository.findAll();
     }
 
-    @GetMapping("/Books/{id}")
+    @GetMapping("/books/{id}")
     public Book getBookById(@PathVariable int id) {
 
         Optional<Book> returnVal = bookRepository.findById(id);
@@ -30,31 +30,25 @@ public class BookController {
             return null;
         }
     }
-    // @GetMapping("/Books/{id}")
-    @GetMapping("/books/author/{id}")
-    public Book getBookByAuthorId(@PathVariable int author_id) {
+    @GetMapping("/books/author/{authorId}")
+    public Optional<Book> getBookByAuthorId(@PathVariable Integer authorId) {
 
-        Optional<Book> returnVal = bookRepository.findById(author_id);
-        if (returnVal.isPresent()  ) {
-            return returnVal.get();
-        } else {
-            return null;
-        }
+        return bookRepository.findByAuthorId(authorId);
     }
 
-    @PostMapping("/Books")
+    @PostMapping("/books")
     @ResponseStatus(HttpStatus.CREATED)
     public Book addBook(@RequestBody Book Book) {
         return bookRepository.save(Book);
     }
 
-    @PutMapping("/Books")
+    @PutMapping("/books")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateBook(@RequestBody Book Book) {
         bookRepository.save(Book);
     }
 
-    @DeleteMapping("/Books/{id}")
+    @DeleteMapping("/books/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBook(@PathVariable int id) {
         bookRepository.deleteById(id);

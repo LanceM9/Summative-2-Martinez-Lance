@@ -18,9 +18,19 @@ type Publisher {
     phone: String!
     email: String!
 }
+type Book {
+    id: ID!
+    isbn: String!
+    publishDate: String!
+    author: Author
+    title: String!
+    publisher: Publisher
+    price: Int!
+}
 
 
 type Query{
     findAuthorById(id:ID!): Author
     findPublisherById(id:ID!): Publisher
+    findBookById(id:ID!): Book
 }

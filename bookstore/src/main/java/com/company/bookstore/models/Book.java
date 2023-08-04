@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -14,25 +15,24 @@ public class Book implements Serializable{
 
     @Id
     @Column(name = "book_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     private String isbn;
 
     private LocalDate publishDate;
 
-    @Column(name = "author_id")
+    @Column(name="author_id")
     private Integer authorId;
 
     private String title;
-
-    @Column(name = "publisher_id")
+    @Column(name="publisher_id")
     private Integer publisherId;
 
-    private Integer price;
+    private BigDecimal price;
 
-    public Book(Integer Id, String isbn, LocalDate publishDate, Integer authorId, String title, Integer publisherId, Integer price) {
-        this.Id = Id;
+    public Book(Integer id, String isbn, LocalDate publishDate, Integer authorId, String title, Integer publisherId, BigDecimal price) {
+        this.id = id;
         this.isbn = isbn;
         this.publishDate = publishDate;
         this.authorId = authorId;
@@ -45,11 +45,11 @@ public class Book implements Serializable{
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getIsbn() {
@@ -92,11 +92,11 @@ public class Book implements Serializable{
         this.publisherId = publisherId;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -105,18 +105,18 @@ public class Book implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(Id, book.Id) && Objects.equals(isbn, book.isbn) && Objects.equals(publishDate, book.publishDate) && Objects.equals(authorId, book.authorId) && Objects.equals(title, book.title) && Objects.equals(publisherId, book.publisherId) && Objects.equals(price, book.price);
+        return Objects.equals(id, book.id) && Objects.equals(isbn, book.isbn) && Objects.equals(publishDate, book.publishDate) && Objects.equals(authorId, book.authorId) && Objects.equals(title, book.title) && Objects.equals(publisherId, book.publisherId) && Objects.equals(price, book.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, isbn, publishDate, authorId, title, publisherId, price);
+        return Objects.hash(id, isbn, publishDate, authorId, title, publisherId, price);
     }
 
     @Override
     public String toString() {
         return "Book{" +
-                "Id=" + Id +
+                "id=" + id +
                 ", isbn='" + isbn + '\'' +
                 ", publishDate=" + publishDate +
                 ", authorId=" + authorId +
