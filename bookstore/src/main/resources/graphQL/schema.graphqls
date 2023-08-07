@@ -18,6 +18,7 @@ type Publisher {
     postalCode: String!
     phone: String!
     email: String!
+    books: [Book]
 }
 
 type Book {

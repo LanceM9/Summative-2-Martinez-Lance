@@ -27,12 +27,12 @@ public class BookRepositoryTests {
     @Autowired
     PublisherRepository publisherRepository;
 
-     Book book;
-     Publisher publisher;
+    Book book;
+    Publisher publisher;
 
-     Author author;
+    Author author;
 
-     BigDecimal bigDecimal = new BigDecimal("21.95");
+    BigDecimal bigDecimal = new BigDecimal("21.95");
 
     Publisher publisher2;
     Author author2;
@@ -72,7 +72,7 @@ public class BookRepositoryTests {
         author = authorRepository.save(author);
 
         publisher2 = new Publisher();
-         author2 = new Author();
+        author2 = new Author();
 
 
         //author.setBooks(bookList);
@@ -125,7 +125,7 @@ public class BookRepositoryTests {
         book.setTitle("Thery");
         book.setPublishDate(LocalDate.of(2018,8,19));
 
-       assertEquals( bookRepository.findAll().size(),0);
+        assertEquals( bookRepository.findAll().size(),0);
         book = bookRepository.save(book);
 
 
