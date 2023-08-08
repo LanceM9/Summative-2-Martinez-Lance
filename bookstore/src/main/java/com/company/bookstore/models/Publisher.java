@@ -43,19 +43,21 @@ public class Publisher implements Serializable {
         this.phone = phone;
         this.email = email;
     }
-public Set<Book> getBooks() {
-    return books;
-}
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public String getName() {

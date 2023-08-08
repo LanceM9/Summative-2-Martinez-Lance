@@ -3,7 +3,6 @@ package com.company.bookstore.repositories;
 import com.company.bookstore.models.Author;
 import com.company.bookstore.models.Book;
 import com.company.bookstore.models.Publisher;
-import com.sun.source.tree.LambdaExpressionTree;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +43,6 @@ public class BookRepositoryTests {
         publisherRepository.deleteAll();
 
 
-
         publisher = new Publisher();
         author = new Author();
 
@@ -75,7 +73,6 @@ public class BookRepositoryTests {
         author2 = new Author();
 
 
-        //author.setBooks(bookList);
         author2.setCity("apple");
         author2.setEmail("asd@ad.com");
         author2.setFirstName("First");
@@ -128,8 +125,6 @@ public class BookRepositoryTests {
         assertEquals( bookRepository.findAll().size(),0);
         book = bookRepository.save(book);
 
-
-
         Optional<Book> book1 = bookRepository.findById(book.getId());
 
         assertEquals( bookRepository.findAll().size(),1);
@@ -138,7 +133,6 @@ public class BookRepositoryTests {
     }
     @Test
     public void shouldUpdateBookTest() throws Exception{
-
         Book book2 = new Book();
         book2.setAuthorId(author2.getId());
         book2.setPublisherId(publisher2.getId());
