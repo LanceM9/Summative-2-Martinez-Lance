@@ -2,7 +2,7 @@ type Author{
     id: ID!
     firstName: String!
     lastName: String!
-    street: String
+    street: String!
     city: String!
     postalCode: String!
     phone: String!
